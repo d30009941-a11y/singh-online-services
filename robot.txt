@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://d30009941-a11y.github.io/singh-online-services/sitemap.xml
