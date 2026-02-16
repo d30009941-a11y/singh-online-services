@@ -2,225 +2,161 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>Jharkhand Services | Singh Online Services</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Services | Singh Online Services</title>
 
 <style>
+body {margin:0;font-family:Arial,sans-serif;background:#f4f6f9;}
 
-/* ===== GLOBAL ===== */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+.nav {background:#08306b;text-align:center;padding:12px;}
+.nav a {color:white;text-decoration:none;margin:0 20px;font-weight:bold;}
+.nav a:hover {text-decoration:underline;}
+
+.header {background:#0d47a1;color:white;text-align:center;padding:50px 20px;}
+.header h1 {margin:0;font-size:34px;}
+.header p {margin-top:10px;font-size:18px;}
+
+.category {padding:40px 20px;}
+.category h2 {text-align:center;margin-bottom:25px;}
+
+.grid {
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+padding:0 40px;
 }
 
-/* ===== SECTION ===== */
-.services-section {
-  padding: 80px 20px;
-  text-align: center;
+.card {
+padding:18px;
+border-radius:6px;
+text-align:center;
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
 }
 
-.section-title {
-  font-size: 36px;
-  color: #fff;
-  margin-bottom: 50px;
-  font-weight: 700;
+.card:hover {transform:translateY(-5px);opacity:0.9;}
+
+.gov {background:#1565c0;}
+.land {background:#6a1b9a;}
+.education {background:#2e7d32;}
+.jobs {background:#ad1457;}
+.utility {background:#ef6c00;}
+.health {background:#00838f;}
+
+footer {background:#0d47a1;color:white;text-align:center;padding:15px;}
+
+.note {
+text-align:center;
+font-size:13px;
+color:#555;
+margin:30px 20px;
 }
-
-/* ===== GRID ===== */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 35px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* ===== CARD ===== */
-.service-card {
-  position: relative;
-  padding: 35px;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  color: #fff;
-  overflow: visible;
-}
-
-.service-card:hover {
-  transform: translateY(-12px) scale(1.03);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.4);
-  z-index: 1000;
-}
-
-/* Vibrant Gradients */
-.service-card:nth-child(1) {
-  background: linear-gradient(135deg, #ff416c, #ff4b2b);
-}
-
-.service-card:nth-child(2) {
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
-}
-
-.service-card:nth-child(3) {
-  background: linear-gradient(135deg, #f7971e, #ffd200);
-}
-
-.service-card:nth-child(4) {
-  background: linear-gradient(135deg, #8e2de2, #4a00e0);
-}
-
-.card-content h3 {
-  margin: 0 0 10px;
-  font-size: 22px;
-}
-
-.card-content p {
-  margin: 0;
-  font-size: 14px;
-  opacity: 0.95;
-}
-
-/* ===== DROPDOWN ===== */
-.sub-services {
-  position: absolute;
-  top: 110%;
-  left: 0;
-  width: 100%;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(12px);
-  border-radius: 15px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  padding: 15px 0;
-  z-index: 9999;
-
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(15px);
-  transition: all 0.4s ease;
-}
-
-.sub-services a {
-  display: block;
-  padding: 12px 20px;
-  text-decoration: none;
-  color: #222;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.sub-services a:hover {
-  background: rgba(0,0,0,0.05);
-  padding-left: 30px;
-}
-
-/* Show dropdown on hover */
-.service-card:hover .sub-services {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-
-  .service-card {
-    margin-bottom: 15px;
-  }
-
-  /* Click Toggle */
-  .service-card.active .sub-services {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-}
-
 </style>
 </head>
 
 <body>
 
-<section class="services-section">
-  <h2 class="section-title">Our Premium Services</h2>
+<div class="nav">
+<a href="index.html">Home</a>
+<a href="services.html">Services</a>
+</div>
 
-  <div class="services-grid">
+<div class="header">
+<h1>Jharkhand Government Online Services</h1>
+<p>Verified Official Portals</p>
+</div>
 
-    <!-- Government Services -->
-    <div class="service-card">
-      <div class="card-content">
-        <h3>Government Services</h3>
-        <p>Complete online documentation & application support</p>
-      </div>
-      <div class="sub-services">
-        <a href="#">PAN Card</a>
-        <a href="#">Aadhar Update</a>
-        <a href="#">Voter ID</a>
-        <a href="#">Income Certificate</a>
-      </div>
-    </div>
+<!-- CITIZEN SERVICES -->
+<div class="category">
+<h2>Citizen & Core Portals</h2>
+<div class="grid">
+<a href="https://www.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card gov">Jharkhand State Portal</a>
+<a href="https://jharsewa.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card gov">Jharsewa</a>
+<a href="https://edistrict.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card gov">e-District</a>
+<a href="https://aahar.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card gov">Ration Card</a>
+<a href="https://rtps.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card gov">RTPS Services</a>
+<a href="https://jhpolice.gov.in/" target="_blank" rel="noopener noreferrer" class="card gov">Jharkhand Police</a>
+</div>
+</div>
 
-    <!-- Business Services -->
-    <div class="service-card">
-      <div class="card-content">
-        <h3>Business Services</h3>
-        <p>Registration, GST & compliance solutions</p>
-      </div>
-      <div class="sub-services">
-        <a href="#">GST Registration</a>
-        <a href="#">MSME Registration</a>
-        <a href="#">Company Registration</a>
-        <a href="#">Trademark Filing</a>
-      </div>
-    </div>
+<!-- LAND & REGISTRATION -->
+<div class="category" style="background:#f3e5f5;">
+<h2>Land & Registration</h2>
+<div class="grid">
+<a href="https://jharbhoomi.nic.in/" target="_blank" rel="noopener noreferrer" class="card land">Jharbhoomi</a>
+<a href="https://jharkhandregistration.gov.in/" target="_blank" rel="noopener noreferrer" class="card land">e-Stamp</a>
+<a href="https://igr.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card land">IGR Registration</a>
+<a href="https://revenue.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card land">Revenue Dept</a>
+</div>
+</div>
 
-    <!-- Digital Services -->
-    <div class="service-card">
-      <div class="card-content">
-        <h3>Digital Services</h3>
-        <p>Online applications & digital documentation</p>
-      </div>
-      <div class="sub-services">
-        <a href="#">Online Form Fill</a>
-        <a href="#">Resume Making</a>
-        <a href="#">Exam Registration</a>
-        <a href="#">Email Setup</a>
-      </div>
-    </div>
+<!-- EDUCATION -->
+<div class="category">
+<h2>Education & Universities</h2>
+<div class="grid">
+<a href="https://jac.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card education">JAC Board</a>
+<a href="https://www.ranchiuniversity.ac.in/" target="_blank" rel="noopener noreferrer" class="card education">Ranchi University</a>
+<a href="https://www.vbu.ac.in/" target="_blank" rel="noopener noreferrer" class="card education">VBU</a>
+<a href="https://www.sidokanhu.ac.in/" target="_blank" rel="noopener noreferrer" class="card education">SKMU</a>
+<a href="https://www.npu.ac.in/" target="_blank" rel="noopener noreferrer" class="card education">NPU</a>
+<a href="https://www.cuj.ac.in/" target="_blank" rel="noopener noreferrer" class="card education">Central University Jharkhand</a>
+<a href="https://nta.ac.in/" target="_blank" rel="noopener noreferrer" class="card education">NTA</a>
+<a href="https://scholarships.gov.in/" target="_blank" rel="noopener noreferrer" class="card education">Scholarship Portal</a>
+</div>
+</div>
 
-    <!-- Financial Services -->
-    <div class="service-card">
-      <div class="card-content">
-        <h3>Financial Services</h3>
-        <p>Banking & financial assistance solutions</p>
-      </div>
-      <div class="sub-services">
-        <a href="#">Loan Assistance</a>
-        <a href="#">Insurance Support</a>
-        <a href="#">ITR Filing</a>
-        <a href="#">Bank Account Opening</a>
-      </div>
-    </div>
+<!-- RECRUITMENT -->
+<div class="category" style="background:#fdecea;">
+<h2>Recruitment & Jobs</h2>
+<div class="grid">
+<a href="https://jssc.nic.in/" target="_blank" rel="noopener noreferrer" class="card jobs">JSSC</a>
+<a href="https://www.jpsc.gov.in/" target="_blank" rel="noopener noreferrer" class="card jobs">JPSC</a>
+<a href="https://ssc.gov.in/" target="_blank" rel="noopener noreferrer" class="card jobs">SSC</a>
+<a href="https://www.rrbcdg.gov.in/" target="_blank" rel="noopener noreferrer" class="card jobs">RRB</a>
+<a href="https://www.upsc.gov.in/" target="_blank" rel="noopener noreferrer" class="card jobs">UPSC</a>
+<a href="https://www.joinindianarmy.nic.in/" target="_blank" rel="noopener noreferrer" class="card jobs">Indian Army</a>
+<a href="https://www.ibps.in/" target="_blank" rel="noopener noreferrer" class="card jobs">IBPS</a>
+</div>
+</div>
 
-  </div>
-</section>
+<!-- UTILITIES -->
+<div class="category">
+<h2>Utility & National Services</h2>
+<div class="grid">
+<a href="https://jbvnl.co.in/" target="_blank" rel="noopener noreferrer" class="card utility">Electricity (JBVNL)</a>
+<a href="https://parivahan.gov.in/" target="_blank" rel="noopener noreferrer" class="card utility">Driving License</a>
+<a href="https://portal2.passportindia.gov.in/" target="_blank" rel="noopener noreferrer" class="card utility">Passport Seva</a>
+<a href="https://www.irctc.co.in/" target="_blank" rel="noopener noreferrer" class="card utility">IRCTC</a>
+<a href="https://uidai.gov.in/" target="_blank" rel="noopener noreferrer" class="card utility">Aadhaar</a>
+<a href="https://www.incometax.gov.in/" target="_blank" rel="noopener noreferrer" class="card utility">Income Tax</a>
+<a href="https://digilocker.gov.in/" target="_blank" rel="noopener noreferrer" class="card utility">DigiLocker</a>
+<a href="https://web.umang.gov.in/" target="_blank" rel="noopener noreferrer" class="card utility">UMANG</a>
+</div>
+</div>
 
-<script>
-document.querySelectorAll(".service-card").forEach(card => {
-  card.addEventListener("click", function () {
+<!-- HEALTH -->
+<div class="category" style="background:#e0f7fa;">
+<h2>Health & Welfare</h2>
+<div class="grid">
+<a href="https://health.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card health">Health Dept</a>
+<a href="https://pmjay.gov.in/" target="_blank" rel="noopener noreferrer" class="card health">Ayushman Bharat</a>
+<a href="https://abdm.gov.in/" target="_blank" rel="noopener noreferrer" class="card health">ABDM</a>
+<a href="https://www.epfindia.gov.in/" target="_blank" rel="noopener noreferrer" class="card health">EPFO</a>
+<a href="https://www.esic.nic.in/" target="_blank" rel="noopener noreferrer" class="card health">ESIC</a>
+</div>
+</div>
 
-    if (window.innerWidth <= 768) {
-      document.querySelectorAll(".service-card").forEach(c => {
-        if (c !== card) c.classList.remove("active");
-      });
+<p class="note">
+Note: External links are official government portals. 
+If any link is temporarily unavailable due to maintenance, 
+please visit the main Jharkhand State Portal.
+</p>
 
-      card.classList.toggle("active");
-    }
-
-  });
-});
-</script>
+<footer>
+© 2026 Singh Online Services | All Rights Reserved
+</footer>
 
 </body>
 </html>
