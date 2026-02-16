@@ -15,32 +15,52 @@
             background: #f4f6f9;
         }
 
+        /* NAVIGATION */
+        .nav {
+            background: #08306b;
+            text-align: center;
+            padding: 12px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
         /* HEADER */
         .header {
             background: #0d47a1;
             color: white;
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
         }
 
         .header h1 {
             margin: 0;
-            font-size: 32px;
+            font-size: 34px;
         }
 
         .header p {
             margin-top: 10px;
+            font-size: 18px;
         }
 
         /* SECTION TITLE */
         .section-title {
             text-align: center;
             margin: 40px 0 20px;
-            font-size: 26px;
+            font-size: 28px;
             color: #0d47a1;
         }
 
-        /* GRID */
+        /* SERVICE GRID */
         .services {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -59,7 +79,7 @@
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
             opacity: 0.9;
         }
 
@@ -86,6 +106,12 @@
 
 <body>
 
+    <!-- NAVIGATION -->
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+    </div>
+
     <!-- HEADER -->
     <div class="header">
         <h1>Our Services</h1>
@@ -96,7 +122,6 @@
     <h2 class="section-title">Available Services</h2>
 
     <div class="services">
-
         <a href="#" class="card c1">Aadhaar Services</a>
         <a href="#" class="card c2">PAN Card Services</a>
         <a href="#" class="card c3">Driving License Services</a>
@@ -106,7 +131,6 @@
         <a href="#" class="card c7">SSC & Banking Forms</a>
         <a href="#" class="card c8">Scholarship Applications</a>
         <a href="#" class="card c9">Other Online Services</a>
-
     </div>
 
     <!-- FOOTER -->
@@ -114,5 +138,7 @@
         © 2026 Singh Online Services | All Rights Reserved
     </footer>
 
+</body>
+</html>
 </body>
 </html>
