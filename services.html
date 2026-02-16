@@ -2,154 +2,184 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Jharkhand Government & National Services | Singh Online Services</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services | Singh Online Services</title>
 
 <style>
-body {margin:0;font-family:Arial,sans-serif;background:#f4f6f9;}
-.nav {background:#08306b;text-align:center;padding:12px;}
-.nav a {color:white;text-decoration:none;margin:0 20px;font-weight:bold;}
-.nav a:hover {text-decoration:underline;}
-
-.header {background:#0d47a1;color:white;text-align:center;padding:50px 20px;}
-.header h1 {margin:0;font-size:34px;}
-.header p {margin-top:10px;font-size:18px;}
-
-.category {padding:40px 20px;}
-.category h2 {text-align:center;margin-bottom:25px;color:#0d47a1;}
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
-  padding:0 40px;
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f6f9;
 }
 
-.card {
-  padding:18px;
-  border-radius:6px;
-  text-align:center;
-  color:white;
-  text-decoration:none;
-  font-weight:bold;
-  transition:0.3s;
+/* Top Navigation */
+.navbar{
+    display:flex;
+    justify-content:center;
+    background:#0d47a1;
+    padding:15px 0;
+    gap:25px;
+    flex-wrap:wrap;
 }
 
-.card:hover {transform:translateY(-5px);opacity:0.9;}
+.nav-item{
+    position:relative;
+}
 
-.gov {background:#1565c0;}
-.land {background:#6a1b9a;}
-.education {background:#2e7d32;}
-.jobs {background:#ad1457;}
-.utility {background:#ef6c00;}
-.health {background:#00838f;}
+.nav-item > a{
+    color:#fff;
+    text-decoration:none;
+    padding:10px 18px;
+    font-weight:bold;
+    border-radius:6px;
+    transition:0.3s;
+}
 
-footer {background:#0d47a1;color:white;text-align:center;padding:15px;}
+.nav-item > a:hover{
+    background:#1565c0;
+}
 
-.note {
-  text-align:center;
-  font-size:13px;
-  color:#555;
-  margin:30px 20px;
+/* Mega Menu */
+.mega-menu{
+    display:none;
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    top:45px;
+    width:850px;
+    background:#fff;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    border-radius:10px;
+    padding:25px;
+    z-index:999;
+}
+
+.mega-menu::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:6px;
+    background:var(--color);
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+}
+
+.nav-item:hover .mega-menu{
+    display:flex;
+    gap:40px;
+}
+
+.mega-column{
+    flex:1;
+}
+
+.mega-column a{
+    display:block;
+    padding:8px 0;
+    text-decoration:none;
+    color:#333;
+    font-size:14px;
+    transition:0.2s;
+}
+
+.mega-column a:hover{
+    color:var(--color);
+    padding-left:5px;
+}
+
+/* Responsive */
+@media(max-width:900px){
+    .mega-menu{
+        position:static;
+        transform:none;
+        width:100%;
+        flex-direction:column;
+        margin-top:10px;
+    }
 }
 </style>
 </head>
-
 <body>
 
-<div class="nav">
-  <a href="index.html">Home</a>
-  <a href="services.html">Services</a>
-</div>
+<div class="navbar">
 
-<div class="header">
-  <h1>Jharkhand Government & National Services</h1>
-  <p>Verified Official Portals</p>
+<!-- GOVERNMENT SERVICES -->
+<div class="nav-item" style="--color:#1e88e5;">
+<a href="#">Government Services</a>
+<div class="mega-menu">
+<div class="mega-column">
+<a href="https://uidai.gov.in/" target="_blank">Aadhaar (UIDAI)</a>
+<a href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" target="_blank">PAN Card Apply</a>
+<a href="https://www.incometax.gov.in/" target="_blank">Income Tax e-Filing</a>
+<a href="https://www.passportindia.gov.in/" target="_blank">Passport Seva</a>
+<a href="https://parivahan.gov.in/" target="_blank">Parivahan (DL/RC)</a>
 </div>
-
-<!-- CITIZEN & STATE PORTALS -->
-<div class="category">
-<h2>Citizen & State Government Portals</h2>
-<div class="grid">
-  <a href="https://www.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card gov">Jharkhand State Official Portal</a>
-  <a href="https://jharsewa.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card gov">Jharsewa e-District</a>
-  <a href="https://edistrict.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card gov">e-District Services</a>
-  <a href="https://aahar.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card gov">Aahar Jharkhand (PDS)</a>
+<div class="mega-column">
+<a href="https://voters.eci.gov.in/" target="_blank">Voter ID Services</a>
+<a href="https://services.india.gov.in/" target="_blank">National Portal of India</a>
+<a href="https://www.epfindia.gov.in/" target="_blank">EPFO</a>
+<a href="https://www.eshram.gov.in/" target="_blank">e-Shram Card</a>
 </div>
-</div>
-
-<!-- LAND & REGISTRATION -->
-<div class="category" style="background:#f3e5f5;">
-<h2>Land & Land Record Services</h2>
-<div class="grid">
-  <a href="https://jharbhoomi.nic.in/" target="_blank" rel="noopener noreferrer" class="card land">Jharbhoomi Land Records</a>
-  <a href="https://jharkhandregistration.gov.in/" target="_blank" rel="noopener noreferrer" class="card land">e-Stamp & Registration</a>
-  <a href="https://igr.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card land">IGR Registration</a>
-  <a href="https://revenue.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card land">Revenue Department</a>
 </div>
 </div>
 
-<!-- EDUCATION & SCHOLARSHIP -->
-<div class="category">
-<h2>Education & Scholarship</h2>
-<div class="grid">
-  <a href="https://jac.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card education">Jharkhand Academic Council</a>
-  <a href="https://www.ranchiuniversity.ac.in/" target="_blank" rel="noopener noreferrer" class="card education">Ranchi University</a>
-  <a href="https://www.vbu.ac.in/" target="_blank" rel="noopener noreferrer" class="card education">Vinoba Bhave University</a>
-  <a href="https://www.sidokanhu.ac.in/" target="_blank" rel="noopener noreferrer" class="card education">SKMU University</a>
-  <a href="https://www.npu.ac.in/" target="_blank" rel="noopener noreferrer" class="card education">Nilamber-Pitamber University</a>
-  <a href="https://nta.ac.in/" target="_blank" rel="noopener noreferrer" class="card education">National Testing Agency (NTA)</a>
-  <a href="https://scholarships.gov.in/" target="_blank" rel="noopener noreferrer" class="card education">National Scholarship Portal</a>
+<!-- JHARKHAND SERVICES -->
+<div class="nav-item" style="--color:#43a047;">
+<a href="#">Jharkhand State Services</a>
+<div class="mega-menu">
+<div class="mega-column">
+<a href="https://jharsewa.jharkhand.gov.in/" target="_blank">JharSewa (RTPS)</a>
+<a href="https://jharnibandhan.gov.in/" target="_blank">e-Stamp / Registration</a>
+<a href="https://jharbhoomi.jharkhand.gov.in/" target="_blank">JharBhoomi</a>
+<a href="https://aahar.jharkhand.gov.in/" target="_blank">Ration Card</a>
 </div>
+<div class="mega-column">
+<a href="https://ekalyan.cgg.gov.in/" target="_blank">e-Kalyan Scholarship</a>
+<a href="https://www.jhpolice.gov.in/" target="_blank">Jharkhand Police</a>
+<a href="https://www.jharkhand.gov.in/" target="_blank">Jharkhand Official Portal</a>
 </div>
-
-<!-- RECRUITMENT -->
-<div class="category" style="background:#fdecea;">
-<h2>Recruitment & Competitive Exams</h2>
-<div class="grid">
-  <a href="https://jssc.nic.in/" target="_blank" rel="noopener noreferrer" class="card jobs">Jharkhand Staff Selection Commission</a>
-  <a href="https://www.jpsc.gov.in/" target="_blank" rel="noopener noreferrer" class="card jobs">Jharkhand Public Service Commission</a>
-  <a href="https://ssc.gov.in/" target="_blank" rel="noopener noreferrer" class="card jobs">Staff Selection Commission (SSC)</a>
-  <a href="https://www.rrbcdg.gov.in/" target="_blank" rel="noopener noreferrer" class="card jobs">Railway Recruitment Board</a>
-  <a href="https://www.upsc.gov.in/" target="_blank" rel="noopener noreferrer" class="card jobs">Union Public Service Commission (UPSC)</a>
 </div>
 </div>
 
-<!-- NATIONAL & UTILITY SERVICES -->
-<div class="category">
-<h2>National & Utility Services</h2>
-<div class="grid">
-  <a href="https://parivahan.gov.in/" target="_blank" rel="noopener noreferrer" class="card utility">Parivahan (DL, RC & Transport)</a>
-  <a href="https://portal2.passportindia.gov.in/" target="_blank" rel="noopener noreferrer" class="card utility">Passport Seva</a>
-  <a href="https://www.irctc.co.in/" target="_blank" rel="noopener noreferrer" class="card utility">IRCTC Railway Booking</a>
-  <a href="https://uidai.gov.in/" target="_blank" rel="noopener noreferrer" class="card utility">Aadhaar Services</a>
-  <a href="https://www.incometax.gov.in/" target="_blank" rel="noopener noreferrer" class="card utility">Income Tax e-Filing</a>
-  <a href="https://digilocker.gov.in/" target="_blank" rel="noopener noreferrer" class="card utility">DigiLocker</a>
-  <a href="https://web.umang.gov.in/" target="_blank" rel="noopener noreferrer" class="card utility">UMANG Government App</a>
+<!-- EDUCATION & RECRUITMENT -->
+<div class="nav-item" style="--color:#f4511e;">
+<a href="#">Education & Recruitment</a>
+<div class="mega-menu">
+<div class="mega-column">
+<a href="https://ssc.nic.in/" target="_blank">SSC</a>
+<a href="https://www.rrbapply.gov.in/" target="_blank">RRB Apply</a>
+<a href="https://nta.ac.in/" target="_blank">NTA Exams</a>
+<a href="https://www.upsc.gov.in/" target="_blank">UPSC</a>
 </div>
+<div class="mega-column">
+<a href="https://www.jac.jharkhand.gov.in/" target="_blank">JAC Jharkhand</a>
+<a href="https://jharkhanduniversities.nic.in/" target="_blank">Jharkhand Universities</a>
+<a href="https://www.digilocker.gov.in/" target="_blank">DigiLocker</a>
 </div>
-
-<!-- HEALTH & WELFARE -->
-<div class="category" style="background:#e0f7fa;">
-<h2>Health & Social Welfare</h2>
-<div class="grid">
-  <a href="https://health.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer" class="card health">Jharkhand Health Dept</a>
-  <a href="https://pmjay.gov.in/" target="_blank" rel="noopener noreferrer" class="card health">Ayushman Bharat</a>
-  <a href="https://abdm.gov.in/" target="_blank" rel="noopener noreferrer" class="card health">ABDM Health Mission</a>
-  <a href="https://www.epfindia.gov.in/" target="_blank" rel="noopener noreferrer" class="card health">EPFO</a>
-  <a href="https://www.esic.nic.in/" target="_blank" rel="noopener noreferrer" class="card health">ESIC</a>
 </div>
 </div>
 
-<p class="note">
-Note: All links above are verified official government portals. 
-If any service link is temporarily unavailable due to maintenance or site restructuring, 
-please access the main official Jharkhand State Portal for navigation. 6
-</p>
+<!-- UTILITIES -->
+<div class="nav-item" style="--color:#8e24aa;">
+<a href="#">Utility & Bills</a>
+<div class="mega-menu">
+<div class="mega-column">
+<a href="https://www.npci.org.in/what-we-do/upi/product-overview" target="_blank">UPI Services</a>
+<a href="https://www.bharatbillpay.com/" target="_blank">Electricity Bill (BBPS)</a>
+<a href="https://www.irctc.co.in/" target="_blank">IRCTC Ticket</a>
+<a href="https://www.indianpost.gov.in/" target="_blank">India Post</a>
+</div>
+<div class="mega-column">
+<a href="https://web.whatsapp.com/" target="_blank">WhatsApp Web</a>
+<a href="https://www.airtel.in/bank/" target="_blank">Airtel Payments Bank</a>
+<a href="https://www.paytm.com/" target="_blank">Paytm</a>
+</div>
+</div>
+</div>
 
-<footer>
-© 2026 Singh Online Services | All Rights Reserved
-</footer>
+</div>
 
 </body>
 </html>
