@@ -3,179 +3,220 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services | Singh Online Services</title>
+<title>Our Services - Singh Online Services</title>
 
 <style>
 body{
+    font-family: Arial, sans-serif;
     margin:0;
-    font-family:Arial, sans-serif;
     background:#f4f6f9;
 }
 
-/* Top Navigation */
-.navbar{
-    display:flex;
-    justify-content:center;
-    background:#0d47a1;
-    padding:15px 0;
-    gap:25px;
-    flex-wrap:wrap;
-}
-
-.nav-item{
-    position:relative;
-}
-
-.nav-item > a{
-    color:#fff;
-    text-decoration:none;
-    padding:10px 18px;
+.page-title{
+    text-align:center;
+    padding:40px 20px 10px;
+    font-size:28px;
     font-weight:bold;
-    border-radius:6px;
-    transition:0.3s;
+    color:#0d47a1;
 }
 
-.nav-item > a:hover{
-    background:#1565c0;
+.page-subtitle{
+    text-align:center;
+    margin-bottom:40px;
+    color:#555;
 }
 
-/* Mega Menu */
-.mega-menu{
-    display:none;
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    top:45px;
-    width:850px;
+/* Grid */
+.services-grid{
+    width:92%;
+    max-width:1300px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    padding-bottom:60px;
+}
+
+/* Card */
+.service-card{
+    position:relative;
     background:#fff;
-    box-shadow:0 10px 30px rgba(0,0,0,0.15);
-    border-radius:10px;
-    padding:25px;
-    z-index:999;
+    padding:22px;
+    border-radius:14px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    transition:0.3s ease;
+    cursor:pointer;
 }
 
-.mega-menu::before{
+.service-card:hover{
+    transform:translateY(-6px);
+}
+
+/* Category Color Strip */
+.service-card::before{
     content:"";
     position:absolute;
     top:0;
     left:0;
     width:100%;
     height:6px;
-    background:var(--color);
-    border-top-left-radius:10px;
-    border-top-right-radius:10px;
+    border-radius:14px 14px 0 0;
 }
 
-.nav-item:hover .mega-menu{
-    display:flex;
-    gap:40px;
+.strip-blue::before{background:#0d47a1;}
+.strip-green::before{background:#2e7d32;}
+.strip-orange::before{background:#ef6c00;}
+.strip-purple::before{background:#6a1b9a;}
+.strip-red::before{background:#c62828;}
+.strip-teal::before{background:#00897b;}
+.strip-indigo::before{background:#3949ab;}
+.strip-brown::before{background:#6d4c41;}
+
+.service-title{
+    font-size:17px;
+    font-weight:600;
+    color:#0d47a1;
 }
 
-.mega-column{
-    flex:1;
+/* Dropdown */
+.sub-services{
+    position:absolute;
+    top:110%;
+    left:0;
+    width:290px;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.18);
+    padding:10px 0;
+    z-index:999;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    transition:all 0.35s ease;
 }
 
-.mega-column a{
+.service-card:hover .sub-services{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.sub-services a{
     display:block;
-    padding:8px 0;
-    text-decoration:none;
-    color:#333;
+    padding:11px 18px;
     font-size:14px;
-    transition:0.2s;
+    color:#333;
+    text-decoration:none;
+    transition:0.25s;
 }
 
-.mega-column a:hover{
-    color:var(--color);
-    padding-left:5px;
+.sub-services a:hover{
+    background:#f3f6fb;
+    padding-left:24px;
 }
 
-/* Responsive */
-@media(max-width:900px){
-    .mega-menu{
-        position:static;
-        transform:none;
-        width:100%;
-        flex-direction:column;
-        margin-top:10px;
-    }
-}
 </style>
 </head>
+
 <body>
 
-<div class="navbar">
+<div class="page-title">Government & Digital Services</div>
+<div class="page-subtitle">Central & Jharkhand State Official Service Portals</div>
 
-<!-- GOVERNMENT SERVICES -->
-<div class="nav-item" style="--color:#1e88e5;">
-<a href="#">Government Services</a>
-<div class="mega-menu">
-<div class="mega-column">
-<a href="https://uidai.gov.in/" target="_blank">Aadhaar (UIDAI)</a>
-<a href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" target="_blank">PAN Card Apply</a>
-<a href="https://www.incometax.gov.in/" target="_blank">Income Tax e-Filing</a>
-<a href="https://www.passportindia.gov.in/" target="_blank">Passport Seva</a>
-<a href="https://parivahan.gov.in/" target="_blank">Parivahan (DL/RC)</a>
-</div>
-<div class="mega-column">
-<a href="https://voters.eci.gov.in/" target="_blank">Voter ID Services</a>
-<a href="https://services.india.gov.in/" target="_blank">National Portal of India</a>
-<a href="https://www.epfindia.gov.in/" target="_blank">EPFO</a>
-<a href="https://www.eshram.gov.in/" target="_blank">e-Shram Card</a>
-</div>
+<div class="services-grid">
+
+<!-- Aadhaar -->
+<div class="service-card strip-blue">
+<div class="service-title">Aadhaar Services</div>
+<div class="sub-services">
+<a href="https://myaadhaar.uidai.gov.in/" target="_blank" rel="noopener noreferrer">Update Aadhaar</a>
+<a href="https://myaadhaar.uidai.gov.in/genricDownloadAadhaar" target="_blank" rel="noopener noreferrer">Download Aadhaar</a>
+<a href="https://resident.uidai.gov.in/check-aadhaar-status" target="_blank" rel="noopener noreferrer">Check Status</a>
+<a href="https://appointments.uidai.gov.in/" target="_blank" rel="noopener noreferrer">Book Appointment</a>
 </div>
 </div>
 
-<!-- JHARKHAND SERVICES -->
-<div class="nav-item" style="--color:#43a047;">
-<a href="#">Jharkhand State Services</a>
-<div class="mega-menu">
-<div class="mega-column">
-<a href="https://jharsewa.jharkhand.gov.in/" target="_blank">JharSewa (RTPS)</a>
-<a href="https://jharnibandhan.gov.in/" target="_blank">e-Stamp / Registration</a>
-<a href="https://jharbhoomi.jharkhand.gov.in/" target="_blank">JharBhoomi</a>
-<a href="https://aahar.jharkhand.gov.in/" target="_blank">Ration Card</a>
-</div>
-<div class="mega-column">
-<a href="https://ekalyan.cgg.gov.in/" target="_blank">e-Kalyan Scholarship</a>
-<a href="https://www.jhpolice.gov.in/" target="_blank">Jharkhand Police</a>
-<a href="https://www.jharkhand.gov.in/" target="_blank">Jharkhand Official Portal</a>
-</div>
+<!-- PAN -->
+<div class="service-card strip-green">
+<div class="service-title">PAN Card Services</div>
+<div class="sub-services">
+<a href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" target="_blank" rel="noopener noreferrer">New PAN Apply</a>
+<a href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" target="_blank" rel="noopener noreferrer">PAN Correction</a>
+<a href="https://www.trackpan.utiitsl.com/" target="_blank" rel="noopener noreferrer">Track PAN</a>
+<a href="https://www.incometax.gov.in/" target="_blank" rel="noopener noreferrer">Income Tax Portal</a>
 </div>
 </div>
 
-<!-- EDUCATION & RECRUITMENT -->
-<div class="nav-item" style="--color:#f4511e;">
-<a href="#">Education & Recruitment</a>
-<div class="mega-menu">
-<div class="mega-column">
-<a href="https://ssc.nic.in/" target="_blank">SSC</a>
-<a href="https://www.rrbapply.gov.in/" target="_blank">RRB Apply</a>
-<a href="https://nta.ac.in/" target="_blank">NTA Exams</a>
-<a href="https://www.upsc.gov.in/" target="_blank">UPSC</a>
-</div>
-<div class="mega-column">
-<a href="https://www.jac.jharkhand.gov.in/" target="_blank">JAC Jharkhand</a>
-<a href="https://jharkhanduniversities.nic.in/" target="_blank">Jharkhand Universities</a>
-<a href="https://www.digilocker.gov.in/" target="_blank">DigiLocker</a>
-</div>
+<!-- JharSewa -->
+<div class="service-card strip-orange">
+<div class="service-title">JharSewa (RTPS Jharkhand)</div>
+<div class="sub-services">
+<a href="https://jharsewa.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">Birth Certificate</a>
+<a href="https://jharsewa.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">Death Certificate</a>
+<a href="https://jharsewa.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">Caste Certificate</a>
+<a href="https://jharsewa.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">Income Certificate</a>
+<a href="https://jharsewa.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">Domicile Certificate</a>
 </div>
 </div>
 
-<!-- UTILITIES -->
-<div class="nav-item" style="--color:#8e24aa;">
-<a href="#">Utility & Bills</a>
-<div class="mega-menu">
-<div class="mega-column">
-<a href="https://www.npci.org.in/what-we-do/upi/product-overview" target="_blank">UPI Services</a>
-<a href="https://www.bharatbillpay.com/" target="_blank">Electricity Bill (BBPS)</a>
-<a href="https://www.irctc.co.in/" target="_blank">IRCTC Ticket</a>
-<a href="https://www.indianpost.gov.in/" target="_blank">India Post</a>
+<!-- e-Stamp -->
+<div class="service-card strip-purple">
+<div class="service-title">e-Stamp & Registration</div>
+<div class="sub-services">
+<a href="https://jharnibandhan.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">e-Stamp</a>
+<a href="https://jharnibandhan.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">Property Registration</a>
+<a href="https://jharnibandhan.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">Deed Registration</a>
 </div>
-<div class="mega-column">
-<a href="https://web.whatsapp.com/" target="_blank">WhatsApp Web</a>
-<a href="https://www.airtel.in/bank/" target="_blank">Airtel Payments Bank</a>
-<a href="https://www.paytm.com/" target="_blank">Paytm</a>
 </div>
+
+<!-- Electricity -->
+<div class="service-card strip-red">
+<div class="service-title">Electricity Bill</div>
+<div class="sub-services">
+<a href="https://jbvnl.co.in/" target="_blank" rel="noopener noreferrer">JBVNL</a>
+<a href="https://www.bijlimitra.com/" target="_blank" rel="noopener noreferrer">SBPDCL/NBPDCL</a>
+</div>
+</div>
+
+<!-- Railway -->
+<div class="service-card strip-teal">
+<div class="service-title">Railway & Transport</div>
+<div class="sub-services">
+<a href="https://www.irctc.co.in/" target="_blank" rel="noopener noreferrer">IRCTC Ticket Booking</a>
+<a href="https://www.rrbapply.gov.in/" target="_blank" rel="noopener noreferrer">RRB Apply</a>
+<a href="https://parivahan.gov.in/" target="_blank" rel="noopener noreferrer">Driving Licence</a>
+<a href="https://vahan.parivahan.gov.in/" target="_blank" rel="noopener noreferrer">Vehicle Services</a>
+</div>
+</div>
+
+<!-- Passport -->
+<div class="service-card strip-indigo">
+<div class="service-title">Passport Services</div>
+<div class="sub-services">
+<a href="https://www.passportindia.gov.in/" target="_blank" rel="noopener noreferrer">Apply Passport</a>
+<a href="https://www.passportindia.gov.in/" target="_blank" rel="noopener noreferrer">Track Passport</a>
+</div>
+</div>
+
+<!-- Banking -->
+<div class="service-card strip-brown">
+<div class="service-title">Banking & Digital</div>
+<div class="sub-services">
+<a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer">WhatsApp Web</a>
+<a href="https://www.airtel.in/bank/" target="_blank" rel="noopener noreferrer">Airtel Payments Bank</a>
+<a href="https://www.onlinesbi.sbi/" target="_blank" rel="noopener noreferrer">SBI Online</a>
+<a href="https://www.pnbindia.in/" target="_blank" rel="noopener noreferrer">PNB Online</a>
+</div>
+</div>
+
+<!-- Recruitment -->
+<div class="service-card strip-green">
+<div class="service-title">Recruitment & Exams</div>
+<div class="sub-services">
+<a href="https://www.jssc.nic.in/" target="_blank" rel="noopener noreferrer">JSSC</a>
+<a href="https://www.jpsc.gov.in/" target="_blank" rel="noopener noreferrer">JPSC</a>
+<a href="https://ssc.nic.in/" target="_blank" rel="noopener noreferrer">SSC</a>
+<a href="https://www.upsconline.nic.in/" target="_blank" rel="noopener noreferrer">UPSC</a>
 </div>
 </div>
 
