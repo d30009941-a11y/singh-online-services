@@ -3,116 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Services - Singh Online Services</title>
+<title>Our Services | Singh Online Services</title>
 
 <style>
-body{
-    font-family: Arial, sans-serif;
-    margin:0;
-    background:#f4f6f9;
+
+/* ===== GLOBAL ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 }
 
-.page-title{
-    text-align:center;
-    padding:40px 20px 10px;
-    font-size:28px;
-    font-weight:bold;
-    color:#0d47a1;
+/* ===== SECTION ===== */
+.services-section {
+  padding: 80px 20px;
+  text-align: center;
 }
 
-.page-subtitle{
-    text-align:center;
-    margin-bottom:40px;
-    color:#555;
+.section-title {
+  font-size: 36px;
+  color: #fff;
+  margin-bottom: 50px;
+  font-weight: 700;
 }
 
-/* Grid */
-.services-grid{
-    width:92%;
-    max-width:1300px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
-    padding-bottom:60px;
+/* ===== GRID ===== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-/* Card */
-.service-card{
-    position:relative;
-    background:#fff;
-    padding:22px;
-    border-radius:14px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
-    transition:0.3s ease;
-    cursor:pointer;
+/* ===== CARD ===== */
+.service-card {
+  position: relative;
+  padding: 35px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  color: #fff;
+  overflow: visible;
 }
 
-.service-card:hover{
-    transform:translateY(-6px);
+.service-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+  z-index: 1000;
 }
 
-/* Category Color Strip */
-.service-card::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:6px;
-    border-radius:14px 14px 0 0;
+/* Vibrant Gradients */
+.service-card:nth-child(1) {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
 }
 
-.strip-blue::before{background:#0d47a1;}
-.strip-green::before{background:#2e7d32;}
-.strip-orange::before{background:#ef6c00;}
-.strip-purple::before{background:#6a1b9a;}
-.strip-red::before{background:#c62828;}
-.strip-teal::before{background:#00897b;}
-.strip-indigo::before{background:#3949ab;}
-.strip-brown::before{background:#6d4c41;}
-
-.service-title{
-    font-size:17px;
-    font-weight:600;
-    color:#0d47a1;
+.service-card:nth-child(2) {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
 }
 
-/* Dropdown */
-.sub-services{
-    position:absolute;
-    top:110%;
-    left:0;
-    width:290px;
-    background:#fff;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.18);
-    padding:10px 0;
-    z-index:999;
-    opacity:0;
-    visibility:hidden;
-    transform:translateY(10px);
-    transition:all 0.35s ease;
+.service-card:nth-child(3) {
+  background: linear-gradient(135deg, #f7971e, #ffd200);
 }
 
-.service-card:hover .sub-services{
-    opacity:1;
-    visibility:visible;
-    transform:translateY(0);
+.service-card:nth-child(4) {
+  background: linear-gradient(135deg, #8e2de2, #4a00e0);
 }
 
-.sub-services a{
-    display:block;
-    padding:11px 18px;
-    font-size:14px;
-    color:#333;
-    text-decoration:none;
-    transition:0.25s;
+.card-content h3 {
+  margin: 0 0 10px;
+  font-size: 22px;
 }
 
-.sub-services a:hover{
-    background:#f3f6fb;
-    padding-left:24px;
+.card-content p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.95;
+}
+
+/* ===== DROPDOWN ===== */
+.sub-services {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  padding: 15px 0;
+  z-index: 9999;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 0.4s ease;
+}
+
+.sub-services a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.sub-services a:hover {
+  background: rgba(0,0,0,0.05);
+  padding-left: 30px;
+}
+
+/* Show dropdown on hover */
+.service-card:hover .sub-services {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+
+  .service-card {
+    margin-bottom: 15px;
+  }
+
+  /* Click Toggle */
+  .service-card.active .sub-services {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
 }
 
 </style>
@@ -120,107 +142,85 @@ body{
 
 <body>
 
-<div class="page-title">Government & Digital Services</div>
-<div class="page-subtitle">Central & Jharkhand State Official Service Portals</div>
+<section class="services-section">
+  <h2 class="section-title">Our Premium Services</h2>
 
-<div class="services-grid">
+  <div class="services-grid">
 
-<!-- Aadhaar -->
-<div class="service-card strip-blue">
-<div class="service-title">Aadhaar Services</div>
-<div class="sub-services">
-<a href="https://myaadhaar.uidai.gov.in/" target="_blank" rel="noopener noreferrer">Update Aadhaar</a>
-<a href="https://myaadhaar.uidai.gov.in/genricDownloadAadhaar" target="_blank" rel="noopener noreferrer">Download Aadhaar</a>
-<a href="https://resident.uidai.gov.in/check-aadhaar-status" target="_blank" rel="noopener noreferrer">Check Status</a>
-<a href="https://appointments.uidai.gov.in/" target="_blank" rel="noopener noreferrer">Book Appointment</a>
-</div>
-</div>
+    <!-- Government Services -->
+    <div class="service-card">
+      <div class="card-content">
+        <h3>Government Services</h3>
+        <p>Complete online documentation & application support</p>
+      </div>
+      <div class="sub-services">
+        <a href="#">PAN Card</a>
+        <a href="#">Aadhar Update</a>
+        <a href="#">Voter ID</a>
+        <a href="#">Income Certificate</a>
+      </div>
+    </div>
 
-<!-- PAN -->
-<div class="service-card strip-green">
-<div class="service-title">PAN Card Services</div>
-<div class="sub-services">
-<a href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" target="_blank" rel="noopener noreferrer">New PAN Apply</a>
-<a href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" target="_blank" rel="noopener noreferrer">PAN Correction</a>
-<a href="https://www.trackpan.utiitsl.com/" target="_blank" rel="noopener noreferrer">Track PAN</a>
-<a href="https://www.incometax.gov.in/" target="_blank" rel="noopener noreferrer">Income Tax Portal</a>
-</div>
-</div>
+    <!-- Business Services -->
+    <div class="service-card">
+      <div class="card-content">
+        <h3>Business Services</h3>
+        <p>Registration, GST & compliance solutions</p>
+      </div>
+      <div class="sub-services">
+        <a href="#">GST Registration</a>
+        <a href="#">MSME Registration</a>
+        <a href="#">Company Registration</a>
+        <a href="#">Trademark Filing</a>
+      </div>
+    </div>
 
-<!-- JharSewa -->
-<div class="service-card strip-orange">
-<div class="service-title">JharSewa (RTPS Jharkhand)</div>
-<div class="sub-services">
-<a href="https://jharsewa.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">Birth Certificate</a>
-<a href="https://jharsewa.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">Death Certificate</a>
-<a href="https://jharsewa.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">Caste Certificate</a>
-<a href="https://jharsewa.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">Income Certificate</a>
-<a href="https://jharsewa.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">Domicile Certificate</a>
-</div>
-</div>
+    <!-- Digital Services -->
+    <div class="service-card">
+      <div class="card-content">
+        <h3>Digital Services</h3>
+        <p>Online applications & digital documentation</p>
+      </div>
+      <div class="sub-services">
+        <a href="#">Online Form Fill</a>
+        <a href="#">Resume Making</a>
+        <a href="#">Exam Registration</a>
+        <a href="#">Email Setup</a>
+      </div>
+    </div>
 
-<!-- e-Stamp -->
-<div class="service-card strip-purple">
-<div class="service-title">e-Stamp & Registration</div>
-<div class="sub-services">
-<a href="https://jharnibandhan.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">e-Stamp</a>
-<a href="https://jharnibandhan.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">Property Registration</a>
-<a href="https://jharnibandhan.jharkhand.gov.in/" target="_blank" rel="noopener noreferrer">Deed Registration</a>
-</div>
-</div>
+    <!-- Financial Services -->
+    <div class="service-card">
+      <div class="card-content">
+        <h3>Financial Services</h3>
+        <p>Banking & financial assistance solutions</p>
+      </div>
+      <div class="sub-services">
+        <a href="#">Loan Assistance</a>
+        <a href="#">Insurance Support</a>
+        <a href="#">ITR Filing</a>
+        <a href="#">Bank Account Opening</a>
+      </div>
+    </div>
 
-<!-- Electricity -->
-<div class="service-card strip-red">
-<div class="service-title">Electricity Bill</div>
-<div class="sub-services">
-<a href="https://jbvnl.co.in/" target="_blank" rel="noopener noreferrer">JBVNL</a>
-<a href="https://www.bijlimitra.com/" target="_blank" rel="noopener noreferrer">SBPDCL/NBPDCL</a>
-</div>
-</div>
+  </div>
+</section>
 
-<!-- Railway -->
-<div class="service-card strip-teal">
-<div class="service-title">Railway & Transport</div>
-<div class="sub-services">
-<a href="https://www.irctc.co.in/" target="_blank" rel="noopener noreferrer">IRCTC Ticket Booking</a>
-<a href="https://www.rrbapply.gov.in/" target="_blank" rel="noopener noreferrer">RRB Apply</a>
-<a href="https://parivahan.gov.in/" target="_blank" rel="noopener noreferrer">Driving Licence</a>
-<a href="https://vahan.parivahan.gov.in/" target="_blank" rel="noopener noreferrer">Vehicle Services</a>
-</div>
-</div>
+<script>
+document.querySelectorAll(".service-card").forEach(card => {
+  card.addEventListener("click", function () {
 
-<!-- Passport -->
-<div class="service-card strip-indigo">
-<div class="service-title">Passport Services</div>
-<div class="sub-services">
-<a href="https://www.passportindia.gov.in/" target="_blank" rel="noopener noreferrer">Apply Passport</a>
-<a href="https://www.passportindia.gov.in/" target="_blank" rel="noopener noreferrer">Track Passport</a>
-</div>
-</div>
+    if (window.innerWidth <= 768) {
+      document.querySelectorAll(".service-card").forEach(c => {
+        if (c !== card) c.classList.remove("active");
+      });
 
-<!-- Banking -->
-<div class="service-card strip-brown">
-<div class="service-title">Banking & Digital</div>
-<div class="sub-services">
-<a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer">WhatsApp Web</a>
-<a href="https://www.airtel.in/bank/" target="_blank" rel="noopener noreferrer">Airtel Payments Bank</a>
-<a href="https://www.onlinesbi.sbi/" target="_blank" rel="noopener noreferrer">SBI Online</a>
-<a href="https://www.pnbindia.in/" target="_blank" rel="noopener noreferrer">PNB Online</a>
-</div>
-</div>
+      card.classList.toggle("active");
+    }
 
-<!-- Recruitment -->
-<div class="service-card strip-green">
-<div class="service-title">Recruitment & Exams</div>
-<div class="sub-services">
-<a href="https://www.jssc.nic.in/" target="_blank" rel="noopener noreferrer">JSSC</a>
-<a href="https://www.jpsc.gov.in/" target="_blank" rel="noopener noreferrer">JPSC</a>
-<a href="https://ssc.nic.in/" target="_blank" rel="noopener noreferrer">SSC</a>
-<a href="https://www.upsconline.nic.in/" target="_blank" rel="noopener noreferrer">UPSC</a>
-</div>
-</div>
-
-</div>
+  });
+});
+</script>
 
 </body>
 </html>
