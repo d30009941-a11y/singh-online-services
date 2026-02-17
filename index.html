@@ -1,161 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Singh Online Services</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Singh Online Services – Government Online Portal India</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Singh Online Services provides official links for Aadhaar, PAN, Driving License, DigiLocker, UMANG and other government services.">
-    <meta name="keywords" content="Singh Online Services, Aadhaar, PAN card, Driving License, DigiLocker, UMANG, Government services India">
+<meta name="description" content="Singh Online Services is a trusted digital assistance platform providing access to Aadhaar, PAN, Driving License, DigiLocker, UMANG and official government services in India.">
+<meta name="keywords" content="Singh Online Services, Aadhaar services, PAN card, Driving License, DigiLocker, UMANG, Government services India">
+<meta name="author" content="Singh Online Services">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f6f9;
-        }
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Singh Online Services",
+  "url": "https://yourusername.github.io/",
+  "description": "Digital assistance platform helping citizens access official government online services including Aadhaar, PAN, Driving License, DigiLocker and UMANG.",
+  "areaServed": "India",
+  "serviceType": "Government Online Service Assistance"
+}
+</script>
 
-        /* NAVIGATION */
-        .nav {
-            background: #08306b;
-            text-align: center;
-            padding: 12px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
 
-        .nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            font-weight: bold;
-            font-size: 16px;
-        }
+/* NAVIGATION */
+.nav {
+    background: #08306b;
+    text-align: center;
+    padding: 14px;
+}
+.nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 18px;
+    font-weight: bold;
+    font-size: 16px;
+}
+.nav a:hover {
+    text-decoration: underline;
+}
 
-        .nav a:hover {
-            text-decoration: underline;
-        }
+/* HERO */
+.hero {
+    background: linear-gradient(135deg,#0d47a1,#1565c0);
+    color: white;
+    text-align: center;
+    padding: 70px 20px;
+}
+.hero h1 {
+    margin: 0;
+    font-size: 38px;
+}
+.hero p {
+    margin-top: 15px;
+    font-size: 18px;
+}
 
-        /* HERO */
-        .hero {
-            background: #0d47a1;
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-        }
+/* SECTION TITLE */
+.section-title {
+    text-align: center;
+    margin: 50px 0 20px;
+    font-size: 28px;
+    color: #0d47a1;
+}
 
-        .hero h1 {
-            margin: 0;
-            font-size: 36px;
-        }
+/* GRID */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+    padding: 20px 40px 60px;
+}
+.card {
+    padding: 28px;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.card:hover {
+    transform: translateY(-8px);
+    opacity: 0.92;
+}
 
-        .hero p {
-            margin-top: 15px;
-            font-size: 18px;
-        }
+/* COLORS */
+.c1 { background: #e53935; }
+.c2 { background: #8e24aa; }
+.c3 { background: #3949ab; }
+.c4 { background: #00897b; }
+.c5 { background: #f4511e; }
+.c6 { background: #43a047; }
 
-        /* SECTION TITLE */
-        .section-title {
-            text-align: center;
-            margin: 40px 0 20px;
-            font-size: 28px;
-            color: #0d47a1;
-        }
+/* ABOUT */
+.about {
+    background: white;
+    padding: 50px 20px;
+    text-align: center;
+}
+.about p {
+    max-width: 850px;
+    margin: auto;
+    line-height: 1.7;
+    color: #444;
+}
 
-        /* GRID */
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            padding: 20px 40px 60px;
-        }
-
-        .card {
-            padding: 25px;
-            color: white;
-            border-radius: 8px;
-            text-align: center;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-6px);
-            opacity: 0.9;
-        }
-
-        /* COLORS */
-        .c1 { background: #e53935; }
-        .c2 { background: #8e24aa; }
-        .c3 { background: #3949ab; }
-        .c4 { background: #00897b; }
-        .c5 { background: #f4511e; }
-        .c6 { background: #43a047; }
-
-        /* ABOUT */
-        .about {
-            background: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .about p {
-            max-width: 800px;
-            margin: auto;
-            line-height: 1.6;
-            color: #444;
-        }
-
-        /* FOOTER */
-        footer {
-            background: #0d47a1;
-            color: white;
-            text-align: center;
-            padding: 15px;
-        }
-    </style>
+/* FOOTER */
+footer {
+    background: #0d47a1;
+    color: white;
+    text-align: center;
+    padding: 18px;
+    font-size: 14px;
+}
+</style>
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
-    <div class="nav">
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-    </div>
+<div class="nav">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+</div>
 
-    <!-- HERO -->
-    <div class="hero">
-        <h1>Singh Online Services</h1>
-        <p>Your Trusted Digital Service Center</p>
-    </div>
+<div class="hero">
+    <h1>Singh Online Services</h1>
+    <p>Fast & Secure Access to Official Government Online Portals</p>
+</div>
 
-    <!-- SERVICES -->
-    <h2 class="section-title">Important Government Services</h2>
+<h2 class="section-title">Important Government Services</h2>
 
-    <div class="services">
-        <a href="https://uidai.gov.in/" target="_blank" class="card c1">Aadhaar Services</a>
-        <a href="https://incometaxindia.gov.in/Pages/pan.aspx" target="_blank" class="card c2">PAN Card Services</a>
-        <a href="https://parivahan.gov.in/parivahan/" target="_blank" class="card c3">Driving License / RC</a>
-        <a href="https://digilocker.gov.in/" target="_blank" class="card c4">DigiLocker</a>
-        <a href="https://web.umang.gov.in/landing/" target="_blank" class="card c5">UMANG App Services</a>
-        <a href="https://services.india.gov.in/" target="_blank" class="card c6">Govt Services Portal</a>
-    </div>
+<div class="services">
+    <a href="https://uidai.gov.in/" target="_blank" class="card c1">Aadhaar Services</a>
+    <a href="https://incometaxindia.gov.in/Pages/pan.aspx" target="_blank" class="card c2">PAN Card Services</a>
+    <a href="https://parivahan.gov.in/parivahan/" target="_blank" class="card c3">Driving License / RC</a>
+    <a href="https://digilocker.gov.in/" target="_blank" class="card c4">DigiLocker</a>
+    <a href="https://web.umang.gov.in/landing/" target="_blank" class="card c5">UMANG App Services</a>
+    <a href="https://services.india.gov.in/" target="_blank" class="card c6">National Govt Services Portal</a>
+</div>
 
-    <!-- ABOUT -->
-    <div class="about">
-        <h2>About Singh Online Services</h2>
-        <p>
-            Singh Online Services provides assistance for Aadhaar updates,
-            PAN card applications, Driving License services,
-            document downloads, and various government online services.
-            We help customers navigate official government portals quickly and securely.
-        </p>
-    </div>
+<div class="about">
+    <h2>About Singh Online Services</h2>
+    <p>
+        Singh Online Services is a digital assistance platform that helps citizens access official government portals quickly and efficiently.
+        We provide structured access to Aadhaar services via the 
+        <strong>UIDAI</strong> portal, PAN services from the Income Tax Department,
+        Driving License and vehicle services from Parivahan, DigiLocker document access,
+        UMANG services and other national government platforms.
+        Our objective is to simplify online government service access through a clean, fast and user-friendly interface.
+    </p>
+</div>
 
-    <!-- FOOTER -->
-    <footer>
-        © 2026 Singh Online Services | All Rights Reserved
-    </footer>
+<footer>
+    © 2026 Singh Online Services | All Rights Reserved
+</footer>
 
 </body>
 </html>
