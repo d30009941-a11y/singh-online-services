@@ -93,6 +93,31 @@ body {
     0%{left:-75%;}
     100%{left:125%;}
 }
+
+  /* LIVE BADGE */
+.live-badge{
+    display:inline-block;
+    width:10px;
+    height:10px;
+    background:#ff0000;
+    border-radius:50%;
+    margin-left:8px;
+    position:relative;
+    animation:livePulse 1.5s infinite;
+}
+
+/* Pulsing Effect */
+@keyframes livePulse{
+    0%{
+        box-shadow:0 0 0 0 rgba(255,0,0,0.7);
+    }
+    70%{
+        box-shadow:0 0 0 8px rgba(255,0,0,0);
+    }
+    100%{
+        box-shadow:0 0 0 0 rgba(255,0,0,0);
+    }
+  
 /* HERO */
 .hero {
     background: linear-gradient(135deg,#0d47a1,#1565c0);
@@ -179,8 +204,9 @@ footer {
     <a href="contact.html">Contact</a>
 
     <a href="result/index.html" class="result-tab">
-        <span class="shine"></span>
-        RESULT
+    <span class="shine"></span>
+    RESULT
+    <span class="live-badge"></span>
     </a>
 </div>
 
