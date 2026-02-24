@@ -127,8 +127,6 @@ button:hover{
 
 <script>
 
-/* ================= DATA STRUCTURE ================= */
-
 const exams={
 railway:{
 ntpc_ug:"NTPC Under Graduate Level",
@@ -168,8 +166,6 @@ const year=document.getElementById("year");
 const rrb=document.getElementById("rrb");
 const resultBox=document.getElementById("resultBox");
 const statusBar=document.getElementById("statusBar");
-
-/* ================= ORIGINAL DROPDOWN LOGIC ================= */
 
 function clearResult(){
 resultBox.innerHTML="";
@@ -212,7 +208,7 @@ exam.innerHTML+=`<option value="${key}">${exams[cat][key]}</option>`;
 exam.addEventListener("change",function(){
 resetBelow("exam");
 
-/* YEAR DISPLAY LABEL UPDATE (ONLY TEXT CHANGE) */
+/* YEAR LABEL UPDATE */
 year.options[1].text="Current Recruitment";
 year.options[2].text="Previous Recruitment";
 
@@ -242,25 +238,20 @@ rrb.innerHTML+=`<option value="${r}">${r.toUpperCase()}</option>`;
 }
 
 year.classList.remove("hidden");
-
-/* TRIGGER GLOW */
 triggerStatus();
 });
 
 rrb.addEventListener("change",triggerStatus);
-
-/* ================= FIXED GLOW LOGIC ================= */
 
 async function triggerStatus(){
 
 let cat=category.value;
 let ex=exam.value;
 let region=rrb.value;
-
 let paths=[];
 
 if(cat==="railway"){
-if(!ex || !region) return;
+if(!ex||!region) return;
 paths.push(`data/railway/${ex}/current/${region}.json`);
 paths.push(`data/railway/${ex}/previous/${region}.json`);
 }
@@ -277,7 +268,6 @@ paths.push(`data/banking/${ex}/previous/${fileName}`);
 }
 
 let declared=false;
-
 for(let p of paths){
 try{
 let res=await fetch(p,{method:"HEAD"});
@@ -290,9 +280,92 @@ statusBar.className=declared?"statusBar declared":"statusBar pending";
 statusBar.innerHTML=declared?"🔴 RESULT DECLARED":"⏳ RESULT NOT DECLARED";
 }
 
-/* ================= YOUR ORIGINAL checkResult FUNCTION (UNCHANGED) ================= */
+/* ================= RESULT CHECK LOGIC ================= */
 
-/* PASTE YOUR EXISTING checkResult() HERE EXACTLY AS IT WAS */
+async function checkResult(){
+
+if(checkResult.processing) return;
+checkResult.processing=true;
+
+let cat=category.value;
+let ex=exam.value;
+let yr=year.value;
+let region=rrb.value;
+let roll=document.getElementById("roll").value.trim().toUpperCase();
+
+if(!cat||!ex||!yr||!roll){
+resultBox.className="warning";
+resultBox.innerHTML="⚠ Please complete all required fields.";
+checkResult.processing=false;
+return;
+}
+
+let path="";
+
+if(cat==="railway"){
+if(!region){
+resultBox.className="warning";
+resultBox.innerHTML="⚠ Please select RRB Region.";
+checkResult.processing=false;
+return;
+}
+path=`data/railway/${ex}/${yr}/${region}.json`;
+}
+else if(cat==="ssc"){
+path=`data/ssc/${ex}/${yr}/result.json`;
+}
+else if(cat==="banking"){
+let fileName=ex.replace("_","")+".json";
+path=`data/banking/${ex}/${yr}/${fileName}`;
+}
+
+resultBox.className="";
+resultBox.innerHTML="⏳ Checking result, please wait...";
+
+try{
+let response=await fetch(path);
+if(!response.ok) throw new Error("file_not_found");
+
+let data=await response.json();
+if(!data.roll_numbers||!Array.isArray(data.roll_numbers))
+throw new Error("invalid_format");
+
+let totalCount=data.roll_numbers.length;
+let rollSet=new Set(data.roll_numbers);
+let found=rollSet.has(roll);
+
+if(found){
+resultBox.className="success";
+resultBox.innerHTML=`
+<div class="tick">✔</div>
+<strong>Congratulations!</strong><br><br>
+You are provisionally shortlisted for the next stage.<br><br>
+<b>Total Selected Candidates: ${totalCount}</b><br><br>
+Please refer to official notification.
+`;
+}else{
+resultBox.className="error";
+resultBox.innerHTML=`
+❌ Roll Number Not Found.<br><br>
+<b>Total Selected Candidates: ${totalCount}</b>
+`;
+}
+
+}catch(error){
+if(error.message==="file_not_found"){
+resultBox.className="warning";
+resultBox.innerHTML="⚠ Result not available for selected option.";
+}else if(error.message==="invalid_format"){
+resultBox.className="warning";
+resultBox.innerHTML="⚠ Result data format error.";
+}else{
+resultBox.className="warning";
+resultBox.innerHTML="⚠ System error. Please try again.";
+}
+}
+
+checkResult.processing=false;
+}
 
 </script>
 </body>
