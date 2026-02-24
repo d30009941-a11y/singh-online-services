@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Singh Online Services - Results</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#1a73e8,#0d47a1);
+}
+
+.header{
+    text-align:center;
+    color:white;
+    padding:25px;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.card{
+    background:white;
+    max-width:450px;
+    margin:30px auto;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 12px 25px rgba(0,0,0,0.2);
+}
+
+select,input{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#1a73e8;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0d47a1;
+}
+
+.hidden{
+    display:none;
+}
+
+#resultBox{
+    margin-top:15px;
+    padding:15px;
+    border-radius:6px;
+    text-align:center;
+}
+
+.success{
+    background:#e6f4ea;
+    color:#1e7e34;
+}
+
+.error{
+    background:#fdecea;
+    color:#b02a37;
+}
+
+.warning{
+    background:#fff3cd;
+    color:#856404;
+}
+
+.tick{
+    font-size:40px;
+    color:#1e7e34;
+    animation:pop 0.4s ease;
+}
+
+@keyframes pop{
+    0%{transform:scale(0.5);opacity:0;}
+    100%{transform:scale(1);opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">Singh Online Services</div>
+
+<div class="card">
+
+<select id="category">
+<option value="">Select Examination Category</option>
+<option value="railway">Railway Recruitment</option>
+<option value="ssc">SSC Examinations</option>
+<option value="banking">Banking Recruitment</option>
+<option value="other">Other Exams</option>
+</select>
+
+<select id="exam" class="hidden"></select>
+
+<select id="year" class="hidden">
+<option value="">Select Recruitment Cycle</option>
+<option value="current">Current Recruitment</option>
+<option value="previous">Previous Recruitment</option>
+</select>
+
+<select id="rrb" class="hidden"></select>
+
+<input type="text" id="roll" placeholder="Enter Roll Number">
+
+<button onclick="checkResult()">Check Result</button>
+
+<div id="resultBox"></div>
+
+</div>
+
+<script>
+
+const exams={
+railway:{
+ntpc_ug:"NTPC Under Graduate Level",
+ntpc_g:"NTPC Graduate Level",
+alp:"Assistant Loco Pilot",
+technician:"Technician",
+rrb_je:"Junior Engineer",
+group_d:"Group D"
+},
+ssc:{
+cgl:"CGL",
+chsl:"CHSL",
+mts:"MTS",
+je:"JE",
+selection_post:"Selection Post"
+},
+banking:{
+ibps_po:"IBPS PO",
+ibps_clerk:"IBPS Clerk",
+sbi_po:"SBI PO",
+sbi_clerk:"SBI Clerk",
+rrb_po:"RRB PO",
+rrb_clerk:"RRB Clerk"
+}
+};
+
+const rrbList=[
+"ahmedabad","ajmer","allahabad","bangalore","bhopal","bhubaneswar",
+"bilaspur","chandigarh","chennai","gorakhpur","guwahati","jammu",
+"kolkata","malda","mumbai","muzaffarpur","patna","ranchi",
+"secunderabad","thiruvananthapuram"
+];
+
+const category=document.getElementById("category");
+const exam=document.getElementById("exam");
+const year=document.getElementById("year");
+const rrb=document.getElementById("rrb");
+const resultBox=document.getElementById("resultBox");
+
+function clearResult(){
+resultBox.innerHTML="";
+resultBox.className="";
+}
+
+function resetBelow(level){
+
+if(level==="category"){
+exam.classList.add("hidden");
+year.classList.add("hidden");
+rrb.classList.add("hidden");
+exam.innerHTML="";
+year.selectedIndex=0;
+rrb.innerHTML="";
+}
+
+if(level==="exam"){
+year.classList.add("hidden");
+rrb.classList.add("hidden");
+year.selectedIndex=0;
+rrb.innerHTML="";
+}
+
+if(level==="year"){
+rrb.selectedIndex=0;
+}
+
+clearResult();
+}
+
+category.addEventListener("change",function(){
+resetBelow("category");
+
+let cat=this.value;
+if(!exams[cat]) return;
+
+exam.classList.remove("hidden");
+exam.innerHTML="<option value=''>Select Examination</option>";
+
+for(let key in exams[cat]){
+exam.innerHTML+=`<option value="${key}">${exams[cat][key]}</option>`;
+}
+});
+
+exam.addEventListener("change",function(){
+resetBelow("exam");
+
+if(category.value==="railway"){
+rrb.classList.remove("hidden");
+rrb.innerHTML="<option value=''>Select RRB Region</option>";
+rrbList.forEach(r=>{
+rrb.innerHTML+=`<option value="${r}">${r.toUpperCase()}</option>`;
+});
+}
+
+year.classList.remove("hidden");
+});
+
+year.addEventListener("change",function(){
+resetBelow("year");
+});
+
+rrb.addEventListener("change",clearResult);
+
+async function checkResult(){
+
+if(checkResult.processing) return;
+checkResult.processing = true;
+
+let cat=category.value;
+let ex=exam.value;
+let yr=year.value;
+let region=rrb.value;
+let roll=document.getElementById("roll").value.trim().toUpperCase();
+
+if(!cat||!ex||!yr||!roll){
+resultBox.className="warning";
+resultBox.innerHTML="⚠ Please complete all required fields.";
+checkResult.processing = false;
+return;
+}
+
+let path="";
+
+if(cat==="railway"){
+if(!region){
+resultBox.className="warning";
+resultBox.innerHTML="⚠ Please select RRB Region.";
+checkResult.processing = false;
+return;
+}
+path=`data/railway/${ex}/${yr}/${region}.json`;
+}
+else if(cat==="ssc"){
+path=`data/ssc/${ex}/${yr}/result.json`;
+}
+else if(cat==="banking"){
+let fileName=ex.replace("_","")+".json";
+path=`data/banking/${ex}/${yr}/${fileName}`;
+}
+
+resultBox.className="";
+resultBox.innerHTML="⏳ Checking result, please wait...";
+
+try{
+let response=await fetch(path);
+
+if(!response.ok){
+throw new Error("file_not_found");
+}
+
+let data=await response.json();
+
+if(!data.roll_numbers || !Array.isArray(data.roll_numbers)){
+throw new Error("invalid_format");
+}
+
+/* ✅ Exact Count From JSON */
+let totalCount = data.roll_numbers.length;
+
+/* ✅ Faster Search */
+let rollSet = new Set(data.roll_numbers);
+let found = rollSet.has(roll);
+
+if(found){
+resultBox.className="success";
+resultBox.innerHTML=`
+<div class="tick">✔</div>
+<strong>Congratulations!</strong><br><br>
+You are provisionally shortlisted for the next stage.<br><br>
+<b>Total Selected Candidates: ${totalCount}</b><br><br>
+Please refer to the official website for detailed notification.
+`;
+}else{
+resultBox.className="error";
+resultBox.innerHTML=`
+❌ Roll Number Not Found in selected result list.<br><br>
+<b>Total Selected Candidates: ${totalCount}</b>
+`;
+}
+
+}catch(error){
+
+if(error.message==="file_not_found"){
+resultBox.className="warning";
+resultBox.innerHTML="⚠ Result not available for selected option.";
+}else if(error.message==="invalid_format"){
+resultBox.className="warning";
+resultBox.innerHTML="⚠ Result data format error.";
+}else{
+resultBox.className="warning";
+resultBox.innerHTML="⚠ System error. Please try again.";
+}
+
+}
+
+checkResult.processing = false;
+
+}
+
+</script>
+
+</body>
+</html>
