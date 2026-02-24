@@ -122,11 +122,12 @@ button:hover{
 <button onclick="checkResult()">Check Result</button>
 
 <div id="resultBox"></div>
+
 </div>
 
 <script>
 
-/* ===== EXISTING DATA STRUCTURE UNCHANGED ===== */
+/* ================= DATA STRUCTURE ================= */
 
 const exams={
 railway:{
@@ -168,12 +169,13 @@ const rrb=document.getElementById("rrb");
 const resultBox=document.getElementById("resultBox");
 const statusBar=document.getElementById("statusBar");
 
-/* ===== ORIGINAL DROPDOWN LOGIC UNTOUCHED ===== */
+/* ================= ORIGINAL DROPDOWN LOGIC ================= */
 
 function clearResult(){
 resultBox.innerHTML="";
 resultBox.className="";
 }
+
 function resetBelow(level){
 if(level==="category"){
 exam.classList.add("hidden");
@@ -210,7 +212,7 @@ exam.innerHTML+=`<option value="${key}">${exams[cat][key]}</option>`;
 exam.addEventListener("change",function(){
 resetBelow("exam");
 
-/* ===== YEAR DISPLAY NAME UPDATE ONLY ===== */
+/* YEAR DISPLAY LABEL UPDATE (ONLY TEXT CHANGE) */
 year.options[1].text="Current Recruitment";
 year.options[2].text="Previous Recruitment";
 
@@ -241,47 +243,56 @@ rrb.innerHTML+=`<option value="${r}">${r.toUpperCase()}</option>`;
 
 year.classList.remove("hidden");
 
-/* ===== GLOW TRIGGER LOGIC ===== */
+/* TRIGGER GLOW */
 triggerStatus();
 });
 
 rrb.addEventListener("change",triggerStatus);
 
+/* ================= FIXED GLOW LOGIC ================= */
+
 async function triggerStatus(){
 
 let cat=category.value;
 let ex=exam.value;
-let yr=year.value;
 let region=rrb.value;
 
-let path="";
+let paths=[];
 
 if(cat==="railway"){
-if(!region) return;
-path=`data/railway/${ex}/previous/${region}.json`;
+if(!ex || !region) return;
+paths.push(`data/railway/${ex}/current/${region}.json`);
+paths.push(`data/railway/${ex}/previous/${region}.json`);
 }
 else if(cat==="ssc"){
-path=`data/ssc/${ex}/previous/result.json`;
+if(!ex) return;
+paths.push(`data/ssc/${ex}/current/result.json`);
+paths.push(`data/ssc/${ex}/previous/result.json`);
 }
 else if(cat==="banking"){
+if(!ex) return;
 let fileName=ex.replace("_","")+".json";
-path=`data/banking/${ex}/current/${fileName}`;
+paths.push(`data/banking/${ex}/current/${fileName}`);
+paths.push(`data/banking/${ex}/previous/${fileName}`);
 }
 
+let declared=false;
+
+for(let p of paths){
 try{
-let res=await fetch(path,{method:"HEAD"});
-statusBar.style.display="block";
-if(res.ok){
-statusBar.className="statusBar declared";
-statusBar.innerHTML="🔴 RESULT DECLARED";
-}else{
-statusBar.className="statusBar pending";
-statusBar.innerHTML="⏳ RESULT NOT DECLARED";
-}
+let res=await fetch(p,{method:"HEAD"});
+if(res.ok){ declared=true; break; }
 }catch{}
 }
 
-/* ===== YOUR ORIGINAL checkResult FUNCTION BELOW UNCHANGED ===== */
+statusBar.style.display="block";
+statusBar.className=declared?"statusBar declared":"statusBar pending";
+statusBar.innerHTML=declared?"🔴 RESULT DECLARED":"⏳ RESULT NOT DECLARED";
+}
+
+/* ================= YOUR ORIGINAL checkResult FUNCTION (UNCHANGED) ================= */
+
+/* PASTE YOUR EXISTING checkResult() HERE EXACTLY AS IT WAS */
 
 </script>
 </body>
