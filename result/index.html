@@ -250,53 +250,33 @@ resultBox.className="";
 resultBox.innerHTML="⏳ Checking result, please wait...";
 
 try{
-    let data;
+    let path = "";
     
-    // Check if we should use the inlined data
-    if(cat === "banking" && ex === "sbi_clerk" && yr === "current") {
-        data = {
-            "result": [
-                { "roll_no": "1111000055" },
-                { "roll_no": "1181001750" },
-                { "roll_no": "1291000647" },
-                { "roll_no": "1331000593" },
-                { "roll_no": "1521001737" },
-                { "roll_no": "1541007044" },
-                { "roll_no": "1681001113" },
-                { "roll_no": "1691010628" },
-                { "roll_no": "1801002877" },
-                { "roll_no": "1831006359" },
-                { "roll_no": "2011000895" },
-                { "roll_no": "2071002589" }
-                // ... rest of the data would be here
-            ]
-        };
-    } else {
-        // Fallback to fetch for other types
-        let path = "";
-        if(cat==="railway"){
-            if(!region){
-                resultBox.className="warning";
-                resultBox.innerHTML="⚠ Please select RRB Region.";
-                checkResult.processing = false;
-                return;
-            }
-            path=`data/railway/${ex}/${yr}/${region}.json`;
+    // Determine path based on selection
+    if(cat==="railway"){
+        if(!region){
+            resultBox.className="warning";
+            resultBox.innerHTML="⚠ Please select RRB Region.";
+            checkResult.processing = false;
+            return;
         }
-        else if(cat==="ssc"){
-            path=`data/ssc/${ex}/${yr}/result.json`;
-        }
-        else if(cat==="banking"){
-            let fileName=ex.replace("_","")+".json";
-            path=`data/banking/${ex}/${yr}/${fileName}`;
-        }
-        
-        let response=await fetch(path);
-        if(!response.ok) throw new Error("file_not_found");
-        data = await response.json();
+        path=`data/railway/${ex}/${yr}/${region}.json`;
     }
+    else if(cat==="ssc"){
+        path=`data/ssc/${ex}/${yr}/result.json`;
+    }
+    else if(cat==="banking"){
+        let fileName=ex.replace("_","")+".json";
+        path=`data/banking/${ex}/${yr}/${fileName}`;
+    }
+    
+    // Fetch the external JSON file
+    let response=await fetch(path);
+    if(!response.ok) throw new Error("file_not_found");
+    
+    let data = await response.json();
 
-    // Process data (Updated to match the structure of the provided JSON)
+    // Process data structure based on sbiclerk.json format
     if(!data.result || !Array.isArray(data.result)){
         throw new Error("invalid_format");
     }
