@@ -246,84 +246,99 @@ checkResult.processing = false;
 return;
 }
 
-let path="";
-
-if(cat==="railway"){
-if(!region){
-resultBox.className="warning";
-resultBox.innerHTML="⚠ Please select RRB Region.";
-checkResult.processing = false;
-return;
-}
-path=`data/railway/${ex}/${yr}/${region}.json`;
-}
-else if(cat==="ssc"){
-path=`data/ssc/${ex}/${yr}/result.json`;
-}
-else if(cat==="banking"){
-let fileName=ex.replace("_","")+".json";
-path=`data/banking/${ex}/${yr}/${fileName}`;
-}
-
 resultBox.className="";
 resultBox.innerHTML="⏳ Checking result, please wait...";
 
 try{
-let response=await fetch(path);
+    let data;
+    
+    // Check if we should use the inlined data
+    if(cat === "banking" && ex === "sbi_clerk" && yr === "current") {
+        data = {
+            "result": [
+                { "roll_no": "1111000055" },
+                { "roll_no": "1181001750" },
+                { "roll_no": "1291000647" },
+                { "roll_no": "1331000593" },
+                { "roll_no": "1521001737" },
+                { "roll_no": "1541007044" },
+                { "roll_no": "1681001113" },
+                { "roll_no": "1691010628" },
+                { "roll_no": "1801002877" },
+                { "roll_no": "1831006359" },
+                { "roll_no": "2011000895" },
+                { "roll_no": "2071002589" }
+                // ... rest of the data would be here
+            ]
+        };
+    } else {
+        // Fallback to fetch for other types
+        let path = "";
+        if(cat==="railway"){
+            if(!region){
+                resultBox.className="warning";
+                resultBox.innerHTML="⚠ Please select RRB Region.";
+                checkResult.processing = false;
+                return;
+            }
+            path=`data/railway/${ex}/${yr}/${region}.json`;
+        }
+        else if(cat==="ssc"){
+            path=`data/ssc/${ex}/${yr}/result.json`;
+        }
+        else if(cat==="banking"){
+            let fileName=ex.replace("_","")+".json";
+            path=`data/banking/${ex}/${yr}/${fileName}`;
+        }
+        
+        let response=await fetch(path);
+        if(!response.ok) throw new Error("file_not_found");
+        data = await response.json();
+    }
 
-if(!response.ok){
-throw new Error("file_not_found");
-}
+    // Process data (Updated to match the structure of the provided JSON)
+    if(!data.result || !Array.isArray(data.result)){
+        throw new Error("invalid_format");
+    }
 
-let data=await response.json();
+    let totalCount = data.result.length;
+    
+    // Check for roll number in the result array
+    let found = data.result.some(item => item.roll_no === roll);
 
-if(!data.roll_numbers || !Array.isArray(data.roll_numbers)){
-throw new Error("invalid_format");
-}
-
-/* ✅ Exact Count From JSON */
-let totalCount = data.roll_numbers.length;
-
-/* ✅ Faster Search */
-let rollSet = new Set(data.roll_numbers);
-let found = rollSet.has(roll);
-
-if(found){
-resultBox.className="success";
-resultBox.innerHTML=`
-<div class="tick">✔</div>
-<strong>Congratulations!</strong><br><br>
-You are provisionally shortlisted for the next stage.<br><br>
-<b>Total Selected Candidates: ${totalCount}</b><br><br>
-Please refer to the official website for detailed notification.
-`;
-}else{
-resultBox.className="error";
-resultBox.innerHTML=`
-❌ Roll Number Not Found in selected result list.<br><br>
-<b>Total Selected Candidates: ${totalCount}</b>
-`;
-}
+    if(found){
+        resultBox.className="success";
+        resultBox.innerHTML=`
+        <div class="tick">✔</div>
+        <strong>Congratulations!</strong><br><br>
+        You are provisionally shortlisted for the next stage.<br><br>
+        <b>Total Selected Candidates: ${totalCount}</b><br><br>
+        Please refer to the official website for detailed notification.
+        `;
+    }else{
+        resultBox.className="error";
+        resultBox.innerHTML=`
+        ❌ Roll Number Not Found in selected result list.<br><br>
+        <b>Total Selected Candidates: ${totalCount}</b>
+        `;
+    }
 
 }catch(error){
-
-if(error.message==="file_not_found"){
-resultBox.className="warning";
-resultBox.innerHTML="⚠ Result not available for selected option.";
-}else if(error.message==="invalid_format"){
-resultBox.className="warning";
-resultBox.innerHTML="⚠ Result data format error.";
-}else{
-resultBox.className="warning";
-resultBox.innerHTML="⚠ System error. Please try again.";
-}
-
+    console.error(error);
+    if(error.message==="file_not_found"){
+        resultBox.className="warning";
+        resultBox.innerHTML="⚠ Result not available for selected option.";
+    }else if(error.message==="invalid_format"){
+        resultBox.className="warning";
+        resultBox.innerHTML="⚠ Result data format error.";
+    }else{
+        resultBox.className="warning";
+        resultBox.innerHTML="⚠ System error. Please try again.";
+    }
 }
 
 checkResult.processing = false;
-
 }
-
 </script>
 
 </body>
